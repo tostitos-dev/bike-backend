@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_222117) do
   create_table "stations", force: :cascade do |t|
     t.bigint "company_id"
     t.string "name"
-    t.string "slug"
+    t.string "external_id"
     t.string "raw_name"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_222117) do
     t.datetime "captured_at"
     t.integer "empty_slots"
     t.integer "free_bikes"
-    t.string "raw_data"
+    t.json "raw_data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["station_id"], name: "index_telemetries_on_station_id"

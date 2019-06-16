@@ -1,0 +1,4 @@
+:schedule:
+  import_telemetry:
+    every: 1m
+    class: ImportTelemetryJob

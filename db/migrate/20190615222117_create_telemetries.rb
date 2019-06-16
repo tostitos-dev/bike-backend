@@ -5,7 +5,7 @@ class CreateTelemetries < ActiveRecord::Migration[6.0]
       t.datetime :captured_at
       t.integer :empty_slots
       t.integer :free_bikes
-      t.string :raw_data
+      t.json :raw_data
       t.timestamps
     end
   end
