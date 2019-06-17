@@ -16,4 +16,16 @@ class Station < ApplicationRecord
     clean_s.slice!(0)
     update name: clean_s.join(' ')
   end
+
+  def summary
+    t = telemetries.last
+    {
+      name: name,
+      latitude: latitude,
+      longitude: longitude,
+      empty_slots: t.empty_slots,
+      free_bikes: t.free_bikes,
+      last_update: t.captured_at
+    }
+  end
 end
