@@ -3,6 +3,8 @@ class Station < ApplicationRecord
   belongs_to :company
   has_many :telemetries
 
+  include ActionView::Helpers::DateHelper
+
   def update_searchable_name
     return special_searcheable_name unless raw_name.include?('-')
 
@@ -25,7 +27,7 @@ class Station < ApplicationRecord
       longitude: longitude,
       empty_slots: t.empty_slots,
       free_bikes: t.free_bikes,
-      last_update: t.captured_at
+      last_update: time_ago_in_words(t.captured_at.localtime)
     }
   end
 end

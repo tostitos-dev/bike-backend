@@ -21,6 +21,7 @@ gem 'sidekiq-scheduler', '~> 2.0', '>= 2.0.8'
 # gem 'image_processing', '~> 1.2'
 
 gem 'rest-client'
+gem 'time_ago_in_words'
 
 gem 'aasm'
 
