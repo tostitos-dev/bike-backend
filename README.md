@@ -1,7 +1,7 @@
 # README
 
 ## General
-Contar con
+Tener instalado:
 - Versión Ruby: 2.6.2
 - Versión Rails: 6.0.0.rc1
 - Motor de base de datos: Postgresql
@@ -18,7 +18,7 @@ Recomendaciones para la ejecución de la aplicación mediante el uso del procfil
 
 ## Descripción
 
-El sistema es una web api construida con rails. Cuenta con 4 grandes modelos
+El sistema es una web api construida con rails. Cuenta con 4 grandes modelos:
 - Company: objecto base que describe la compañía dueña de las bicicletas.
 - Station: objeto base que describe la ubicación de los estacionamientos de bicicletas.
 - Telemetry: objeto que mantiene la data leída de la API.
@@ -30,6 +30,3 @@ Por otra parte, tiene 3 rutas que sirven a la aplicación fronted:
 - index: devuelve una lista de todos las estaciones y sus últimos valores recibidos.
 - daily_indicators: devuelve KPIS de los últimos valores, así como también el formato para el día actual.
 - last_hour: devuelve una lista con todos los objectos HeartbeatTelemetry de la última hora.
-
-
-
