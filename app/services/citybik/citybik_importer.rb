@@ -58,7 +58,8 @@ module Citybik
 
     def persist(telemetries)
       telemetries.each do |t|
-        Telemetry.create t
+        telemetry = Telemetry.new t
+        telemetry.save! if telemetry.valid?
       end; 0
     end
   end
