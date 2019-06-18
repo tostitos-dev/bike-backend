@@ -22,6 +22,10 @@ class Api::V1::StationsController < Api::V1::BaseController
     render json: result
   end
 
+  def last_hour
+    render json: HeartbeatTelemetry.last_hour
+  end
+
   def bike_stats
     stats = general_stats
     {
@@ -34,13 +38,8 @@ class Api::V1::StationsController < Api::V1::BaseController
   end
 
   def general_stats
-    use = 0
-    free = 0
-    Station.all.each do |station|
-      use += station.telemetries.last.empty_slots
-      free += station.telemetries.last.free_bikes
-    end
-    [use, free]
+    last_heartbeat = HeartbeatTelemetry.last
+    [last_heartbeat.empty_slots, last_heartbeat.free_bikes]
   end
 
   private

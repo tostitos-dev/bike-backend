@@ -6,5 +6,6 @@ class ImportTelemetryJob < ApplicationJob
 
   def perform
     Company.all.each { |c| Citybik::CitybikImporter.new(c).import! }
+    UpdateReportTelemetryJob.perform_now
   end
 end
