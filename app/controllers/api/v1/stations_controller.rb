@@ -23,7 +23,13 @@ class Api::V1::StationsController < Api::V1::BaseController
   end
 
   def last_hour
-    render json: HeartbeatTelemetry.last_hour
+    data = HeartbeatTelemetry.last_hour
+    result = {
+      labels: data.pluck(:created_at),
+      setFree: data.pluck(:free_bikes),
+      setEmpty: data.pluck(:empty_slots)
+    }
+    render json: result
   end
 
   def bike_stats
