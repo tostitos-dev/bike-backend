@@ -17,12 +17,30 @@ class Api::V1::StationsController < Api::V1::BaseController
         day: time_now.strftime('%d'),
         mouth: (I18n.t :abbr_month_names, scope: :date)[time_now.month].capitalize,
         year: time_now.strftime('%Y')
-      },
-      # total: '',
-      # use: "",
-      # free:""
-    }
+      }
+    }.merge! bike_stats
     render json: result
+  end
+
+  def bike_stats
+    stats = general_stats
+    {
+      bike_stats: {
+        total: stats[0] + stats[1],
+        use: stats[0],
+        free: stats[1]
+      }
+    }
+  end
+
+  def general_stats
+    use = 0
+    free = 0
+    Station.all.each do |station|
+      use += station.telemetries.last.empty_slots
+      free += station.telemetries.last.free_bikes
+    end
+    [use, free]
   end
 
   private

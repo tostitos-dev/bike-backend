@@ -2,6 +2,7 @@ class Station < ApplicationRecord
   after_create :update_searchable_name
   belongs_to :company
   has_many :telemetries
+  has_many :report_station_telemetries
 
   include ActionView::Helpers::DateHelper
 

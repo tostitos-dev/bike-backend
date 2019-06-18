@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_222117) do
+ActiveRecord::Schema.define(version: 2019_06_18_153933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2019_06_15_222117) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "report_station_telemetries", force: :cascade do |t|
+    t.bigint "station_id"
+    t.integer "empty_slots"
+    t.integer "free_bikes"
+    t.json "by_hour"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["station_id"], name: "index_report_station_telemetries_on_station_id"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -44,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_222117) do
     t.index ["station_id"], name: "index_telemetries_on_station_id"
   end
 
+  add_foreign_key "report_station_telemetries", "stations"
   add_foreign_key "stations", "companies"
   add_foreign_key "telemetries", "stations"
 end
