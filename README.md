@@ -14,7 +14,7 @@ Recomendaciones para la ejecución de la aplicación mediante el uso del procfil
 - Agregar .env para la ejecución del proyecto
 - Ejecutar bundle install y rake db:setup.
 - Descargar Heroku CLI, las instrucciones se pueden encontrar en https://devcenter.heroku.com/articles/heroku-cli.
-- Situarse en el directorio de la aplicación y ejecutar 'heroku local'. Por defecto se utiliza el puerto 5000.
+- Situarse en el directorio de la aplicación y ejecutar 'heroku local'. Por defecto se utiliza el puerto 5000 y las url para consumir la aplicación frontend están bajo esa URL.
 
 ## Descripción
 
